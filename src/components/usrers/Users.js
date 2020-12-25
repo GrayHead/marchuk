@@ -24,7 +24,6 @@ class Users extends Component {
 					users.map(value => <div key={value.id}>
 						<Link to={url + '/' + value.id}>
 							{value.name}
-
 						</Link>
 					</div>)
 				}
