@@ -1,32 +1,23 @@
 import React, {Component} from 'react';
-import Child from './Child';
-import List from './List';
+import ListItem from './ListItem';
 
 class App extends Component {
-
-
-	constructor(props, context) {
-		super(props, context);
-		console.log('constructor');
-
-	}
+	state = {
+		menuItems: ['About', 'Contcts', 'Menu']
+	};
 
 	render() {
-		console.log('render');
+		let {menuItems} = this.state;
 		return (
-
 			<div>
-				<Child a={'okten'}/>
-				<List/>
-
+				<ul>
+					{
+						menuItems.map(value => <ListItem>{value}</ListItem>)
+					}
+				</ul>
 			</div>
 		);
 	}
-
-	componentDidMount() {
-		console.log('componentDidMount');
-	}
-
 }
 
 export default App;
