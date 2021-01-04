@@ -1,20 +1,12 @@
 import React, {Component} from 'react';
-import ListItem from './ListItem';
+import Users from './components/Users';
 
 class App extends Component {
-	state = {
-		menuItems: ['About', 'Contcts', 'Menu']
-	};
-
 	render() {
-		let {menuItems} = this.state;
 		return (
 			<div>
-				<ul>
-					{
-						menuItems.map(value => <ListItem>{value}</ListItem>)
-					}
-				</ul>
+				<Users/>
+
 			</div>
 		);
 	}
