@@ -1,12 +1,15 @@
-import React, {Component} from 'react';
-import Users from './components/Users';
+import React, {Component, createRef} from 'react';
+import Clock from './Clock';
 
 class App extends Component {
+
+	inputX = createRef();
+
 	render() {
 		return (
 			<div>
-				<Users/>
-
+				<Clock/>
+				<Clock/>
 			</div>
 		);
 	}
