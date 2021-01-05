@@ -1,32 +1,30 @@
 import React, {useState, useEffect} from 'react';
 
-export default function Clock() {
-
-	let [time, setTime] = useState(new Date());
+export default function Clock(props) {
 
 
-	let onDataInput = (e) => {
-		e.preventDefault(); // prevent reload
-		let num = +e.target[0].value;
-		let date = new Date();
-		date.setHours(date.getHours() + num);
-		setInterval(() => {
-			setTime(date);
-			console.log('settime');
-		}, 1000);
-	};
+	let [dateTime, setDateTime] = useState(new Date());
 
 	useEffect(() => {
-		console.log('time changed');
-	}, [time]);
+		let {offset} = props;
+		setInterval(() => {
+			let date = new Date();
+			date.setHours(offset);
+			setDateTime(date);
+		}, 1000);
+	}, [dateTime.getSeconds()]);
+
 
 	return (
 		<div>
-			<form onSubmit={onDataInput}>
-				<input type="number"/>
-				<button>find</button>
-			</form>
-			<div>{time && <span>{time.getHours()}{time.getMinutes()}{time.getSeconds()}</span>}</div>
+			clock
+			<div>
+
+
+				{dateTime && <h4>{`${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`}</h4>
+
+				}
+			</div>
 
 		</div>
 	);

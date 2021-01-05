@@ -3,13 +3,33 @@ import Clock from './Clock';
 
 class App extends Component {
 
-	inputX = createRef();
+	state = {
+		clocks: []
+	};
+	setClock = (e) => {
+		e.preventDefault();
+		let offset = +e.target[0].value;
+		this.state.clocks.push({offset});
+		this.setState(this.state.clocks)
+
+
+	};
 
 	render() {
 		return (
 			<div>
-				<Clock/>
-				<Clock/>
+
+				<form onSubmit={this.setClock}>
+					<input type="number" min={0} max={24}/>
+					<button>set clock</button>
+
+
+				</form>
+				{
+					this.state.clocks.map(clock => <Clock offset={clock.offset}/>)
+				}
+
+
 			</div>
 		);
 	}
